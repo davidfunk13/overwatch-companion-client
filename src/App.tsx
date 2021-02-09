@@ -1,33 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
+import LoginButton from './Components/LoginButton';
 
 function App() {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const url = 'https://overwatch-companion.herokuapp.com/api/users';
-    const req = fetch(url).then(data => data.json());
-
-    req.then(data => setData(data));
-  }, []);
-
-
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <LoginButton />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        {data.map((data: any) => {
-          return (
-            <div key={data.id}>
-              <p>{data.id}</p>
-              <p>{data.battletag}</p>
-              <p>{data.identifier}</p>
-            </div>
-          )
-        })}
         <a
           className="App-link"
           href="https://reactjs.org"

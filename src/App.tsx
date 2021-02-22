@@ -1,15 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import LoginButton from './Components/LoginButton';
-import Profile from './Components/Profile';
-import LogoutButton from './Components/LogoutButton';
+import LoginButton from './components/LoginButton';
+import LogoutButton from './components/LogoutButton';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import Auth from './Components/Auth';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -17,13 +17,14 @@ function App() {
       <header >
         <LoginButton />
         <LogoutButton />
+        <Profile />
       </header>
-      <Router>
+      {/* <Router>
         <Switch>
-          <Route exact path={"/"} component={Profile} />
-          <Route exact path={"/auth"} component={Auth} />
+        <Route exact path={"/"} component={Profile} />
+        <Route exact path={"/auth"} component={Auth} />
         </Switch>
-      </Router>
+      </Router> */}
     </div>
   );
 }

@@ -19,12 +19,6 @@ function App() {
         <LogoutButton />
         <Profile />
       </header>
-      {/* <Router>
-        <Switch>
-        <Route exact path={"/"} component={Profile} />
-        <Route exact path={"/auth"} component={Auth} />
-        </Switch>
-      </Router> */}
     </div>
   );
 }

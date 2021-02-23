@@ -30,7 +30,7 @@ const Profile = () => {
                 body: graphql,
             };
 
-            fetch(process.env.REACT_APP_GRAPH_SERVER, requestOptions)
+            fetch(process.env.REACT_APP_API + "/graph", requestOptions)
                 .then(response => response.json())
                 .then(result => {
                     console.log(result.data.users)

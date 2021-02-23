@@ -11,7 +11,10 @@ const Profile = () => {
 
             const accessToken = await getAccessTokenSilently({
                 audience: process.env.REACT_APP_AUTH_AUDIENCE,
+                scope: "read:messages"
             });
+
+            console.log({ accessToken })
 
             var graphql = JSON.stringify({
                 query: "query{\n    users{\n        name\n        id\n        email\n    }\n}",
@@ -25,10 +28,9 @@ const Profile = () => {
                     "Content-Type": "application/json"
                 },
                 body: graphql,
-                redirect: 'follow'
             };
 
-            fetch("/api/query", requestOptions)
+            fetch(process.env.REACT_APP_GRAPH_SERVER, requestOptions)
                 .then(response => response.json())
                 .then(result => {
                     console.log(result.data.users)
@@ -41,7 +43,7 @@ const Profile = () => {
                 );
 
         } catch (e) {
-            console.warn(e);
+            console.error(e);
         }
     };
 

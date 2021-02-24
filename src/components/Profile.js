@@ -6,6 +6,8 @@ const Profile = () => {
 
     const [fakeUsers, setFakeUsers] = useState(null);
 
+    const apiUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_API : "";
+
     const getGraphData = async () => {
         try {
 
@@ -30,7 +32,7 @@ const Profile = () => {
                 body: graphql,
             };
 
-            fetch(process.env.REACT_APP_API + "/graph", requestOptions)
+            fetch(apiUrl + "/api/graph", requestOptions)
                 .then(response => response.json())
                 .then(result => {
                     console.log(result.data.users)
@@ -48,6 +50,7 @@ const Profile = () => {
     };
 
     useEffect(() => {
+        console.log({ apiUrl, env: process.env.NODE_ENV })
         getGraphData();
     }, []);
 

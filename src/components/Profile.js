@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 const Profile = () => {
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
-    const [fakeUsers, setFakeUsers] = useState(null);
 
     const apiUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_API : "";
 
@@ -36,10 +35,9 @@ const Profile = () => {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result.data.users)
-                    setFakeUsers(result.data.users);
+
                 })
                 .catch(error => {
-                    setFakeUsers({ error })
                     console.log('error', error)
                 }
                 );
@@ -61,11 +59,6 @@ const Profile = () => {
                 <h2>{user.name}</h2>
                 <p>{user.email}</p>
                 <h3>Fake Users</h3>
-                {fakeUsers ? (
-                    <pre>{JSON.stringify(fakeUsers, null, 2)}</pre>
-                ) : (
-                        "No fake users found"
-                    )}
             </div>
         ) : <div>Not Authenticated</div>
     );

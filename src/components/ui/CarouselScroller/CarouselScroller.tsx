@@ -3,7 +3,7 @@ import { Carousel } from 'antd';
 import { CSSProperties } from 'react';
 
 const contentStyle: CSSProperties = {
-    height: '160px',
+    height: '50vh',
     color: '#fff',
     lineHeight: '160px',
     textAlign: 'center',
@@ -12,7 +12,7 @@ const contentStyle: CSSProperties = {
 
 const CarouselScroller: FC = () => {
     return (
-        <Carousel swipe autoplay touchMove accessibility effect="fade">
+        <Carousel autoplay effect="fade">
             <div>
                 <h3 style={contentStyle}>1</h3>
             </div>

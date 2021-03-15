@@ -13,15 +13,13 @@ const AppRouter = ({ }) => {
     const { isAuthenticated } = useAuth0();
     return (
         <Router>
-            <Switch>
-                <PrivateRoute path="/about">
-                    <p>poopfarts</p>
-                </PrivateRoute>
-                <PrivateRoute path="/users">
-                    <p>mmm so tasty yummy farts in my mouth</p>
-                </PrivateRoute>
-                <Route exact path="/" component={isAuthenticated ? Dashboard : Home} />
-            </Switch>
+            <PrivateRoute path="/about">
+                <p>poopfarts</p>
+            </PrivateRoute>
+            <PrivateRoute path="/users">
+                <p>mmm so tasty yummy farts in my mouth</p>
+            </PrivateRoute>
+            <Route exact path="/" component={isAuthenticated ? Dashboard : Home} />
         </Router >
     );
 }

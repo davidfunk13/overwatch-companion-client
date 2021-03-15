@@ -13,12 +13,9 @@ const Profile = () => {
     const data = useFetchGraphQL();
 
     useEffect(() => {
-        console.log({ apiUrl, env: process.env.NODE_ENV })
         console.log({ data })
         setB(data?.battletags)
     }, [data]);
-
-    // useEffect(() => { setB(data?.battletags) }, [data])
 
     return (
         isAuthenticated ? (

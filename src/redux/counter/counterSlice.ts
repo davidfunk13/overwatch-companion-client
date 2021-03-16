@@ -38,5 +38,5 @@ export const incrementAsync = (amount: number) => (dispatch: (arg0: any) => void
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectCount = (state: { counter: { value: any; }; }) => state.counter.value;
-
+export const isDrawerOpen = (state: { drawer: { open: boolean } }) => state.drawer.open;
 export default slice.reducer;

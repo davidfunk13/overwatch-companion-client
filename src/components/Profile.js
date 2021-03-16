@@ -29,7 +29,7 @@ const Profile = () => {
                 </div>
                 <div>
                     {b?.map(item => {
-                        return <div key={item.blizzId}>
+                        return <div key={item?.blizzId}>
                             <p style={{ width: '20em' }}> {JSON.stringify(item)}</p>
                         </div>
                     })}

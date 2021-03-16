@@ -4,24 +4,16 @@ import {
     Redirect,
 } from 'react-router-dom';
 
-function PrivateRoute({ children, ...rest }: any) {
+function PrivateRoute({ component, path }: any) {
     const { isAuthenticated } = useAuth0();
     return (
-        <Route
-            {...rest}
-            render={({ location }) =>
-                isAuthenticated ? (
-                    children
-                ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/",
-                            state: { from: location }
-                        }}
-                    />
-                )
-            }
-        />
+        <Route exact path={path} component={isAuthenticated ? component : (
+            <Redirect to={{
+                pathname: "/",
+                state: { from: '' }
+            }}
+            />
+        )} />
     );
 }
 

@@ -1,24 +1,16 @@
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import React from "react";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from "react-router-dom";
-import Dashboard from "./Dashboard";
 import Home from "./Home";
-import PrivateRoute from "./PrivateRoute";
+import Dashboard from "./Dashboard";
+import AppDrawer from "./ui/Drawer/Drawer";
 
-const AppRouter = ({ }) => {
+const AppRouter = () => {
     const { isAuthenticated } = useAuth0();
     return (
         <Router>
-            <PrivateRoute path="/about">
-                <p>poopfarts</p>
-            </PrivateRoute>
-            <PrivateRoute path="/users">
-                <p>mmm so tasty yummy farts in my mouth</p>
-            </PrivateRoute>
+            <AppDrawer />
+            <Route path="/users" render={() => isAuthenticated ? <p>user bio page</p> : <p>Unauthorized</p>} />
+            <Route path="/about" render={() => isAuthenticated ? <p>about</p> : <p>Unauthorized</p>} />
             <Route exact path="/" component={isAuthenticated ? Dashboard : Home} />
         </Router >
     );

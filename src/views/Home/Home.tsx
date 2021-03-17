@@ -1,20 +1,23 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import { Typography } from 'antd';
 import { useEffect } from 'react';
-// import IHomeProps from './Home.Types';
 import { useHistory } from 'react-router-dom'
-const Home = ({ }: any) => {
+import IHomeProps from './Home.Types';
+
+const { Title } = Typography;
+
+const Home = ({ }: IHomeProps) => {
     const { isAuthenticated } = useAuth0();
+
     const history = useHistory();
 
     useEffect(() => {
-        return isAuthenticated ?
-            history.push(window.location.origin + "/dashboard")
-            : undefined;
+        return isAuthenticated ? history.push(window.location.origin + "/dashboard") : undefined;
     }, [])
 
     return (
         <div>
-            <p>Home page</p>
+            <Title>Home</Title>
         </div>
     );
 };

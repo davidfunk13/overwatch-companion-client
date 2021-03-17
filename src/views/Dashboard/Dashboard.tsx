@@ -1,20 +1,21 @@
-import { useEffect } from 'react'
-import { Counter } from '../redux/counter/Counter';
-// import IDashboardProps from './Dashboard.Types';
+import IDashboardProps from './Dashboard.Types';
+import { Typography } from 'antd'
 
 let renderCount = 0;
 
-const Dashboard = ({ }: any) => {
+const { Title } = Typography;
+
+const Dashboard = ({ }: IDashboardProps) => {
 
     renderCount += 1;
     console.log(`Dashboard renderCount: `, renderCount);
 
     return (
         <div>
-            <Counter />
-            <p>Hey its a dashboard</p>
+            <Title>Dashboard</Title>
         </div>
     );
 };
 
 export default Dashboard;
+

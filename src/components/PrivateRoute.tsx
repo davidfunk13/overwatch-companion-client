@@ -6,6 +6,7 @@ import {
 
 function PrivateRoute({ component, path }: any) {
     const { isAuthenticated } = useAuth0();
+
     return (
         <Route exact path={path} component={isAuthenticated ? component : (
             <Redirect to={{

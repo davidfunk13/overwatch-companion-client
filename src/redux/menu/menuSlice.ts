@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const slice = createSlice({
-  name: 'drawer',
+  name: 'menu',
   initialState: { open: false },
   reducers: {
     toggle: (state: { open: boolean; }) => {
@@ -15,6 +15,8 @@ export const slice = createSlice({
     },
   },
 });
+
+export const isMenuOpen = (state: { menu: { open: boolean } }) => state.menu.open
 
 export const { toggle, close, open } = slice.actions;
 

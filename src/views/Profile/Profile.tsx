@@ -1,25 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useState } from "react";
-import useFetchGraphQL from "../utilities/fetchGraphQL";
+import { useState } from "react";
 
 const Profile = () => {
 
-    const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-    const [b, setB] = useState([]);
-
-    console.log(user)
-    const apiUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_API : "";
-
-    const data = useFetchGraphQL();
-
-    useEffect(() => {
-        console.log({ data })
-        setB(data?.battletags)
-    }, [data]);
+    const { user, isAuthenticated } = useAuth0();
+    const [b, setB] = useState<any>([]);
 
     return (
         isAuthenticated ? (
-            <div>
+            <div className={"view"}>
 
                 <div>
                     <img src={user.picture} alt={user.name} />
@@ -28,7 +17,7 @@ const Profile = () => {
                     <h3>Fake Users</h3>
                 </div>
                 <div>
-                    {b?.map(item => {
+                    {b?.map((item: any) => {
                         return <div key={item?.blizzId}>
                             <p style={{ width: '20em' }}> {JSON.stringify(item)}</p>
                         </div>

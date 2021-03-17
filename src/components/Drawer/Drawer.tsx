@@ -1,12 +1,12 @@
-import { Drawer } from 'antd';
+import { Drawer, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { close } from './drawerSlice'
-import { isDrawerOpen } from '../../../redux/counter/counterSlice';
+import { close, isMenuOpen } from '../../redux/menu/menuSlice'
+
 import IDrawerProps from './Drawer.Types';
 
 const AppDrawer: React.FC<IDrawerProps> = ({ }) => {
-    const isOpen = useSelector(isDrawerOpen);
+    const isOpen = useSelector(isMenuOpen);
 
     const dispatch = useDispatch();
 
@@ -16,22 +16,22 @@ const AppDrawer: React.FC<IDrawerProps> = ({ }) => {
 
     return (
         <Drawer
-            title="App Navigation Drawer"
+            title="Overwatch Skill Rating Tracker"
             placement="left"
             closable={true}
-            onClose={closeDrawer}
+            onClose={closeDrawer()}
             visible={isOpen}
         >
             <nav>
                 <ul>
                     <li>
-                        <Link onClick={closeDrawer} to="/">Home</Link>
+                        <Link component={Typography.Link} onClick={closeDrawer()} to="/">Home</Link>
                     </li>
                     <li>
-                        <Link onClick={closeDrawer} to="/about">About</Link>
+                        <Link component={Typography.Link} onClick={closeDrawer()} to="/profile">Profile</Link>
                     </li>
                     <li>
-                        <Link onClick={closeDrawer} to="/users">Users</Link>
+                        <Link component={Typography.Link} onClick={closeDrawer()} to="/users">Users</Link>
                     </li>
                 </ul>
             </nav>
